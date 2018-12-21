@@ -15,18 +15,13 @@
 (setq custom-file             (locate-user-emacs-file
                                (concat "custom_" emacs-version-short ".el")))
 
-; (set-default-font "tewi-11:weight=normal")
-; (add-to-list 'default-frame-alist '(font . "tewi-11:weight=normal"))
-; (set-face-attribute 'default t :font "tewi-11:weight=normal")
-;
-; (set-face-attribute 'default nil :font "tewi-11:weight=normal")
-; (set-frame-font "tewi-11:weight=normal" nil t)
 
+(when (eq system-type 'gnu/linux)
+    (add-to-list 'load-path "~/.local/share/icons-in-terminal/"))
 
 ;; List of packages to install at launch
 (setq my-packages
       '(
-        ag
         aggressive-indent
         ;; electric-spacing
         electric-operator 
@@ -37,7 +32,7 @@
         helm
         helm-ag
         helm-projectile
-        ;; helm-swoop
+        ; helm-swoop
 	highlight-numbers
 	highlight-operators
 	highlight-parentheses
@@ -50,7 +45,7 @@
         posframe
         project-root
         projectile
-        ;; ranger
+        ranger
         ;; repl-toggle
         ;; restclient
         use-package
@@ -97,6 +92,7 @@
 (require 'setup-yasnippet)
 (require 'setup-gtags)
 (require 'setup-vcs)
+(require 'setup-search)
 
 ;; Setup languages
 (require 'setup-js)
@@ -122,15 +118,23 @@
 ;;; Keychord mode
 (key-chord-mode 1)
 (setq key-chord-two-keys-delay 0.5)
+
+(defun end-of-line-insert-delim ()
+  "Go to the end of line and insert a ';' character if it's not already present"
+  (interactive)
+  (end-of-line)
+  (when (> (line-end-position) 1)
+    (let ((lastchar (buffer-substring-no-properties
+                     (- (line-end-position) 1)
+                     (line-end-position)
+                     )))
+      (when (not (equal ";" lastchar))
+        (insert ";")))))
+
 (--each '(css-mode-hook
           js-mode-hook
           c-mode-hook)
-  (add-hook it (lambda ()
-                 (key-chord-define evil-insert-state-map ";;" (lambda ()
-                                                                " Add a ; character at the end of the line."
-                                                                (end-of-line)
-                                                                (interactive)
-                                                                (insert ";"))))))
+  (add-hook it (key-chord-define evil-insert-state-map ";;" 'end-of-line-insert-delim)))
 
 
 ;;; Always use guide-key mode, it is awesome.
