@@ -1,0 +1,6 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: const-destructure 
+# key: dcon
+# group: es6
+# --
+const { $1 } = $2;
