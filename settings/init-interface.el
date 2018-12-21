@@ -1,4 +1,10 @@
 
+;; Load fonts
+(when (eq system-type 'gnu/linux)
+  (progn
+    (set-face-attribute 'default nil :font "-lucy-tewi-medium-r-normal--11-90-100-100-c-60-ISO10646-1")
+    (add-to-list 'default-frame-alist '(font . "-lucy-tewi-medium-r-normal--11-90-100-100-c-60-ISO10646-1"))))
+
 ;; Theme
 (load-theme 'miami-night t)
 
@@ -19,7 +25,7 @@
 (blink-cursor-mode 0)
 
 ;; Don't use gtkk-system tooltips
-(setq-default x-gtk-use-system-tooltips nil)
+;;(setq-default x-gtk-use-system-tooltips nil)
 
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 (global-visual-line-mode nil)

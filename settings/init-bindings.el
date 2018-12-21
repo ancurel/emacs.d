@@ -30,7 +30,7 @@
       "a=" 'my-align-single-equals
       "b"  'helm-mini             ;; Switch to another buffer
       "c"  (kbd "\"+y") 
-      "B"  'magit-blame-mode
+      "B"  'magit-blame-popup
       "D"  'kill-this-buffer
       "d"  (lambda () (interactive) (evil-ex-call-command nil "bdelete" nil))
       "f"  'helm-imenu            ;; Jump to function in buffer
