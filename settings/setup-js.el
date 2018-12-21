@@ -78,6 +78,9 @@
                                (flycheck-mode 1)
                                (js2-imenu-extras-mode +1)
                                (setq mode-name "JS2")))
+    
+    (after-load 'lsp-mode
+      (add-hook 'js2-mode-hook 'lsp))
 
     ;; electric-layout-mode doesn't play nice with smartparens
     (setq-local electric-layout-rules '((?\; . after)))
@@ -98,14 +101,6 @@
     ;;       :init (progn (add-to-list 'company-backends 'company-tern)))))
 
     ))
-
-
-(use-package lsp-javascript-typescript
-  :after (lsp-mode)
-  :init
-  (add-hook 'js-mode-hook #'lsp-javascript-typescript-enable)
-  (add-hook 'typescript-mode-hook #'lsp-javascript-typescript-enable) ;; for typescript support
-  (add-hook 'rjsx-mode #'lsp-javascript-typescript-enable)) ;; for rjsx-mode support
 
 
 
