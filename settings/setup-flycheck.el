@@ -78,7 +78,7 @@ up before you execute another command."
 
 
 (use-package flycheck-posframe
-  :after flycheck
+  :after (posframe flycheck) 
   :config (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode))
   
 
