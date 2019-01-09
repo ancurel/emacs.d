@@ -55,7 +55,6 @@
   (setq flycheck-disabled-checkers '(php-phpmd))
 
   (turn-on-eldoc-mode)
-  (highlight-symbol-mode)
   (electric-operator-mode)
 
   (turn-on-auto-fill)
