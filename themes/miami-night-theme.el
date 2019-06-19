@@ -41,10 +41,10 @@
    'miami-night
 
    ;; Built-in stuff
+   `(default                                 ((t (:background ,background :foreground ,foreground, :weight normal))))
    `(border                                  ((t (:background ,background :foreground ,gray-2))))
    `(border-glyph                            ((t (nil))))
    `(cursor                                  ((t (:background ,cyan))))
-   `(default                                 ((t (:background ,background :foreground ,foreground, :weight normal))))
    `(fringe                                  ((t (:background ,background))))
    `(vertical-border                         ((t (:foreground ,gray-1 :background ,background))))
    `(gui-element                             ((t (:background ,background :foreground ,foreground))))
@@ -211,13 +211,6 @@
    `(web-mode-javascript-comment-face        ((t (:inherit font-lock-comment-face))))
    `(web-mode-json-comment-face              ((t (:inherit web-mode-javascript-comment-face))))
 
-   ;; IDO
-   `(ido-subdir                              ((t (:foreground ,gray-4))))
-   `(ido-first-match                         ((t (:foreground ,red-light :weight bold))))
-   `(ido-only-match                          ((t (:foreground ,red :weight bold))))
-   `(ido-indicator                           ((t (:foreground ,red :background ,gray-1))))
-   `(ido-virtual                             ((t (:foreground ,gray-4))))
-
    ;; which-function
    `(which-func                              ((t (:foreground ,blue :background nil :weight bold))))
 
@@ -241,19 +234,6 @@
    `(paren-face-match                        ((t (:foreground nil :background nil :inherit show-paren-match))))
    `(paren-face-mismatch                     ((t (:foreground nil :background nil :inherit show-paren-mismatch))))
    `(paren-face-no-match                     ((t (:foreground nil :background nil :inherit show-paren-mismatch))))
-
-   ;; Parenthesis dimming (parenface)
-   `(paren-face                              ((t (:foreground ,gray-4 :background nil))))
-
-   `(sh-heredoc                              ((t (:foreground nil :inherit font-lock-string-face :weight normal))))
-   `(sh-quoted-exec                          ((t (:foreground nil :inherit font-lock-preprocessor-face))))
-   `(slime-highlight-edits-face              ((t (:weight bold))))
-   `(slime-repl-input-face                   ((t (:weight normal :underline nil))))
-   `(slime-repl-prompt-face                  ((t (:underline nil :weight bold :foreground ,purple-light))))
-   `(slime-repl-result-face                  ((t (:foreground ,cyan))))
-   `(slime-repl-output-face                  ((t (:foreground ,blue :background ,gray-1))))
-
-   `(csv-separator-face                      ((t (:foreground ,red-light))))
 
    `(diff-added                              ((t (:foreground ,cyan))))
    `(diff-changed                            ((t (:foreground ,blue-light))))
@@ -337,42 +317,6 @@
    `(evil-mode-line-visual                   ((t (:foreground ,black :background ,blue :weight bold))))
    `(evil-mode-line-replace                  ((t (:foreground ,black :background ,red :weight bold))))
    `(evil-mode-line-normal                   ((t (:foreground ,gray-1))))
-
-
-   ;; Clojure errors
-   `(clojure-test-failure-face               ((t (:background nil :inherit flymake-warnline))))
-   `(clojure-test-error-face                 ((t (:background nil :inherit flymake-errline))))
-   `(clojure-test-success-face               ((t (:background nil :foreground nil :underline ,cyan))))
-
-   ;; For Brian Carper's extended clojure syntax table
-   `(clojure-keyword                         ((t (:foreground ,blue-light))))
-   `(clojure-parens                          ((t (:foreground ,gray-6))))
-   `(clojure-braces                          ((t (:foreground ,cyan))))
-   `(clojure-brackets                        ((t (:foreground ,blue-light))))
-   `(clojure-double-quote                    ((t (:foreground ,cyan-light :background nil))))
-   `(clojure-special                         ((t (:foreground ,blue))))
-   `(clojure-java-call                       ((t (:foreground ,purple-light))))
-
-   ;; MMM-mode
-   `(mmm-code-submode-face                   ((t (:background ,gray-5))))
-   `(mmm-comment-submode-face                ((t (:inherit font-lock-comment-face))))
-   `(mmm-output-submode-face                 ((t (:background ,gray-5))))
-
-   ;; auctex
-   `(font-latex-bold-face                    ((t (:foreground ,cyan))))
-   `(font-latex-doctex-documentation-face    ((t (:background ,gray-5))))
-   `(font-latex-italic-face                  ((t (:foreground ,cyan))))
-   `(font-latex-math-face                    ((t (:foreground ,red-light))))
-   `(font-latex-sectioning-0-face            ((t (:foreground ,blue-light))))
-   `(font-latex-sectioning-1-face            ((t (:foreground ,blue-light))))
-   `(font-latex-sectioning-2-face            ((t (:foreground ,blue-light))))
-   `(font-latex-sectioning-3-face            ((t (:foreground ,blue-light))))
-   `(font-latex-sectioning-4-face            ((t (:foreground ,blue-light))))
-   `(font-latex-sectioning-5-face            ((t (:foreground ,blue-light))))
-   `(font-latex-sedate-face                  ((t (:foreground ,cyan-light))))
-   `(font-latex-string-face                  ((t (:foreground ,blue-light))))
-   `(font-latex-verbatim-face                ((t (:foreground ,red-light))))
-   `(font-latex-warning-face                 ((t (:foreground ,red))))
 
    ;; dired+
    `(diredp-compressed-file-suffix           ((t (:foreground ,blue))))
@@ -510,64 +454,6 @@
 
    ;; Smartparens
    `(sp-pair-overlay-face                    ((t (:foreground nil :background ,gray-1))))
-
-
-   ;; Gnus
-   `(gnus-cite-1                             ((t (:inherit outline-1 :foreground nil))))
-   `(gnus-cite-2                             ((t (:inherit outline-2 :foreground nil))))
-   `(gnus-cite-3                             ((t (:inherit outline-3 :foreground nil))))
-   `(gnus-cite-4                             ((t (:inherit outline-4 :foreground nil))))
-   `(gnus-cite-5                             ((t (:inherit outline-5 :foreground nil))))
-   `(gnus-cite-6                             ((t (:inherit outline-6 :foreground nil))))
-   `(gnus-cite-7                             ((t (:inherit outline-7 :foreground nil))))
-   `(gnus-cite-8                             ((t (:inherit outline-8 :foreground nil))))
-   ;; there are several more -cite- faces...
-   `(gnus-header-content                     ((t (:inherit message-header-other))))
-   `(gnus-header-subject                     ((t (:inherit message-header-subject))))
-   `(gnus-header-from                        ((t (:inherit message-header-other-face :weight bold :foreground ,red-light))))
-   `(gnus-header-name                        ((t (:inherit message-header-name))))
-   `(gnus-button                             ((t (:inherit link :foreground nil))))
-   `(gnus-signature                          ((t (:inherit font-lock-comment-face))))
-
-   `(gnus-summary-normal-unread              ((t (:foreground ,blue :weight normal))))
-   `(gnus-summary-normal-read                ((t (:foreground ,gray-6 :weight normal))))
-   `(gnus-summary-normal-ancient             ((t (:foreground ,cyan-light :weight normal))))
-   `(gnus-summary-normal-ticked              ((t (:foreground ,red-light :weight normal))))
-   `(gnus-summary-low-unread                 ((t (:foreground ,gray-4 :weight normal))))
-   `(gnus-summary-low-read                   ((t (:foreground ,gray-4 :weight normal))))
-   `(gnus-summary-low-ancient                ((t (:foreground ,gray-4 :weight normal))))
-   `(gnus-summary-high-unread                ((t (:foreground ,blue-light :weight normal))))
-   `(gnus-summary-high-read                  ((t (:foreground ,cyan :weight normal))))
-   `(gnus-summary-high-ancient               ((t (:foreground ,cyan :weight normal))))
-   `(gnus-summary-high-ticked                ((t (:foreground ,red-light :weight normal))))
-   `(gnus-summary-cancelled                  ((t (:foreground ,red :background nil :weight normal))))
-
-   `(gnus-group-mail-low                     ((t (:foreground ,gray-4))))
-   `(gnus-group-mail-low-empty               ((t (:foreground ,gray-4))))
-   `(gnus-group-mail-1                       ((t (:foreground nil :weight normal :inherit outline-1))))
-   `(gnus-group-mail-2                       ((t (:foreground nil :weight normal :inherit outline-2))))
-   `(gnus-group-mail-3                       ((t (:foreground nil :weight normal :inherit outline-3))))
-   `(gnus-group-mail-4                       ((t (:foreground nil :weight normal :inherit outline-4))))
-   `(gnus-group-mail-5                       ((t (:foreground nil :weight normal :inherit outline-5))))
-   `(gnus-group-mail-6                       ((t (:foreground nil :weight normal :inherit outline-6))))
-   `(gnus-group-mail-1-empty                 ((t (:inherit gnus-group-mail-1 :foreground ,gray-4))))
-   `(gnus-group-mail-2-empty                 ((t (:inherit gnus-group-mail-2 :foreground ,gray-4))))
-   `(gnus-group-mail-3-empty                 ((t (:inherit gnus-group-mail-3 :foreground ,gray-4))))
-   `(gnus-group-mail-4-empty                 ((t (:inherit gnus-group-mail-4 :foreground ,gray-4))))
-   `(gnus-group-mail-5-empty                 ((t (:inherit gnus-group-mail-5 :foreground ,gray-4))))
-   `(gnus-group-mail-6-empty                 ((t (:inherit gnus-group-mail-6 :foreground ,gray-4))))
-   `(gnus-group-news-1                       ((t (:foreground nil :weight normal :inherit outline-5))))
-   `(gnus-group-news-2                       ((t (:foreground nil :weight normal :inherit outline-6))))
-   `(gnus-group-news-3                       ((t (:foreground nil :weight normal :inherit outline-7))))
-   `(gnus-group-news-4                       ((t (:foreground nil :weight normal :inherit outline-8))))
-   `(gnus-group-news-5                       ((t (:foreground nil :weight normal :inherit outline-1))))
-   `(gnus-group-news-6                       ((t (:foreground nil :weight normal :inherit outline-2))))
-   `(gnus-group-news-1-empty                 ((t (:inherit gnus-group-news-1 :foreground ,gray-4))))
-   `(gnus-group-news-2-empty                 ((t (:inherit gnus-group-news-2 :foreground ,gray-4))))
-   `(gnus-group-news-3-empty                 ((t (:inherit gnus-group-news-3 :foreground ,gray-4))))
-   `(gnus-group-news-4-empty                 ((t (:inherit gnus-group-news-4 :foreground ,gray-4))))
-   `(gnus-group-news-5-empty                 ((t (:inherit gnus-group-news-5 :foreground ,gray-4))))
-   `(gnus-group-news-6-empty                 ((t (:inherit gnus-group-news-6 :foreground ,gray-4))))
 
    `(custom-variable-tag                     ((t (:foreground ,blue))))
    `(custom-group-tag                        ((t (:foreground ,blue))))
