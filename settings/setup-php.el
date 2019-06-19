@@ -47,9 +47,6 @@
 
   (font-lock-add-keywords 'php-mode php-extra-keywords)
 
-  (local-set-key (kbd "RET") (key-binding (kbd "M-j")))
-  (local-set-key (kbd "<S-return>") 'newline)
-
   (setq comment-auto-fill-only-comments 1)
   (setq auto-fill-function 'do-auto-fill)
   (setq flycheck-disabled-checkers '(php-phpmd))
