@@ -2,6 +2,7 @@
 \#*\#
 *.elc
 .DS_Store
+.lsp*
 .places
 .tern-port
 .mc-lists.el
@@ -13,8 +14,10 @@ auto-save-list
 backups
 elpa*
 history
+lsp-cache
 recentf
 smex-items
+transient
 vimish-fold
 games
 url
