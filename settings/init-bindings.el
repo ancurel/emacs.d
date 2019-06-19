@@ -3,6 +3,7 @@
 (global-set-key (kbd "<f7>") 'git-gutter-mode)
 (global-set-key (kbd "<S-insert>") 'clipboard-yank)
 
+
 (after-load 'comint
   (define-key comint-mode-map [up] 'comint-previous-input)
   (define-key comint-mode-map [down] 'comint-next-input))
@@ -43,8 +44,8 @@
       "s"  'ag-project            ;; Ag search from project's root
       "r"  (lambda () (interactive) (font-lock-fontify-buffer) (redraw-display))
       "S"  'delete-trailing-whitespace
-      "t"  'gtags-reindex
-      "T"  'gtags-find-tag
+      "T"  'gtags-reindex
+      "t"  'gtags-find-tag
       "u"  'org-open-at-point-global
       "v"  (kbd "\"+p")
       "w"  'split-window-horizontally
@@ -130,12 +131,13 @@
 
 
 (after-load 'smartparens
+  (sp-local-pair 'prog-mode "{" nil :post-handlers '((util/create-newline-and-enter-sexp "RET")))
   (define-key smartparens-mode-map (kbd "C-; f") 'sp-forward-sexp)
   (define-key smartparens-mode-map (kbd "C-; b") 'sp-backward-sexp))
 
 
 (after-load 'js2-mode
-  (define-key js2-mode-map [(return)]    'newline-and-indent)
+  ;; (define-key js2-mode-map [(return)]    'newline-and-indent)
   (define-key js2-mode-map [(backspace)] 'c-electric-backspace)
   (define-key js2-mode-map [(control d)] 'c-electric-delete-forward))
 
