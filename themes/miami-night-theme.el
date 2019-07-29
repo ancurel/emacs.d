@@ -276,7 +276,7 @@
    `(helm-ff-file                            ((t (:foreground ,foreground))))
    `(helm-history-deleted                    ((t (:foreground ,black :background ,red-light))))
    `(helm-history-remote                     ((t (:foreground ,purple-light))))
-                                        ; help-grep
+   ;; helm-grep
    `(helm-grep-match                         ((t (:inherit helm-match))))
    `(helm-grep-file                          ((t (:foreground ,foreground))))
    `(helm-grep-lineno                        ((t (:foreground ,purple-light))))
@@ -417,6 +417,7 @@
    `(org-upcoming-deadline                   ((t (:foreground ,red-light))))
    `(org-warning                             ((t (:weight bold :foreground ,red))))
 
+   `(markdown-code-face                      ((t nil))))
    `(markdown-url-face                       ((t (:inherit link))))
    `(markdown-link-face                      ((t (:foreground ,blue :underline t))))
 
@@ -457,18 +458,29 @@
 
    `(custom-variable-tag                     ((t (:foreground ,blue))))
    `(custom-group-tag                        ((t (:foreground ,blue))))
-   `(custom-state                            ((t (:foreground ,cyan)))))
+   `(custom-state                            ((t (:foreground ,cyan))))
 
 
-  (custom-theme-set-variables
-   'miami-night
+   (custom-theme-set-faces
+    'miami-night
+    ;; LSP-mode
+    `(lsp-ui-doc-background                   ((t (:background ,background))))
+    `(lsp-ui-sideline-current-symbol          ((t (:foreground ,white :box (:line-width -1 :color ,white)))))
+    `(lsp-ui-sideline-global                  ((t (:background ,background))))
+    `(lsp-ui-sideline-symbol                  ((t (:foreground ,gray-4 :box (:line-width -1 :color ,gray-4)))))
+    `(lsp-ui-sideline-symbol-info             ((t nil))))
 
-   `(ansi-color-names-vector
-     ;; black, red, cyan, blue-light, blue, magenta, cyan, white
-     [,background ,red ,cyan ,blue-light ,blue ,purple-light ,blue ,gray-5])
-   `(ansi-term-color-vector
-     ;; black, red, cyan, blue-light, blue, magenta, cyan, white
-     [unspecified ,background ,red ,cyan ,blue-light ,blue ,purple-light ,blue ,gray-5])))
+   (custom-theme-set-variables
+    'miami-night
+    
+    `(lsp-ui-doc-border ,gray-2)
+
+    `(ansi-color-names-vector
+      ;; black, red, cyan, blue-light, blue, magenta, cyan, white
+      [,background ,red ,cyan ,blue-light ,blue ,purple-light ,blue ,gray-5])
+    `(ansi-term-color-vector
+      ;; black, red, cyan, blue-light, blue, magenta, cyan, white
+      [unspecified ,background ,red ,cyan ,blue-light ,blue ,purple-light ,blue ,gray-5])))
 
 (provide-theme 'miami-night)
 
