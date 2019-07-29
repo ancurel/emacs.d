@@ -100,6 +100,7 @@
 (require 'setup-css)
 (require 'setup-web)
 (require 'setup-python)
+(require 'setup-rust)
 
 
 ;; Hide some modes
