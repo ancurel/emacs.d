@@ -47,55 +47,91 @@
 
 (use-package company-lsp
   :after (company lsp-mode)
-  :config (push 'company-lsp company-backends))
+  :commands company-lsp)
+
 
 (use-package company-box
   :diminish
   :after (company)
+  :functions (my-company-box--make-line my-company-box-icons--elisp)
   :hook (company-mode . company-box-mode)
   :config
-  (when (eq system-type 'gnu/linux)
-    (progn
-      (require 'icons-in-terminal)
-      (setq company-box-icons-unknown 'fa_question_circle)
+  (setq company-box-backends-colors nil
+        company-box-show-single-candidate t
+        company-box-max-candidates 50
+        company-box-doc-delay 0.5
+        company-box-icons-alist 'company-box-icons-all-the-icons)
 
-      (setq company-box-icons-elisp
-            '((fa_tag :face font-lock-function-name-face) ;; Function
-              (fa_cog :face font-lock-variable-name-face) ;; Variable
-              (fa_cube :face font-lock-constant-face) ;; Feature
-              (md_color_lens :face font-lock-doc-face))) ;; Face
+  ;; Support `company-common'
+  (defun my-company-box--make-line (candidate)
+    (-let* (((candidate annotation len-c len-a backend) candidate)
+            (color (company-box--get-color backend))
+            ((c-color a-color i-color s-color) (company-box--resolve-colors color))
+            (icon-string (and company-box--with-icons-p (company-box--add-icon candidate)))
+            (candidate-string (concat (propertize (or company-common "") 'face 'company-tooltip-common)
+                                      (substring (propertize candidate 'face 'company-box-candidate) (length company-common) nil)))
+            (align-string (when annotation
+                            (concat " " (and company-tooltip-align-annotations
+                                             (propertize " " 'display `(space :align-to (- right-fringe ,(or len-a 0) 1)))))))
+            (space company-box--space)
+            (icon-p company-box-enable-icon)
+            (annotation-string (and annotation (propertize annotation 'face 'company-box-annotation)))
+            (line (concat (unless (or (and (= space 2) icon-p) (= space 0))
+                            (propertize " " 'display `(space :width ,(if (or (= space 1) (not icon-p)) 1 0.75))))
+                          (company-box--apply-color icon-string i-color)
+                          (company-box--apply-color candidate-string c-color)
+                          align-string
+                          (company-box--apply-color annotation-string a-color)))
+            (len (length line)))
+      (add-text-properties 0 len (list 'company-box--len (+ len-c len-a)
+                                       'company-box--color s-color)
+                           line)
+      line))
+  (advice-add #'company-box--make-line :override #'my-company-box--make-line)
 
-      (setq company-box-icons-yasnippet 'fa_bookmark)
+  ;; Prettify icons
+  (defun my-company-box-icons--elisp (candidate)
+    (when (derived-mode-p 'emacs-lisp-mode)
+      (let ((sym (intern candidate)))
+        (cond ((fboundp sym) 'Function)
+              ((featurep sym) 'Module)
+              ((facep sym) 'Color)
+              ((boundp sym) 'Variable)
+              ((symbolp sym) 'Text)
+              (t . nil)))))
+  (advice-add #'company-box-icons--elisp :override #'my-company-box-icons--elisp)
 
-      (setq company-box-icons-lsp
-            '((1 . fa_text_height) ;; Text
-              (2 . (fa_tags :face font-lock-function-name-face)) ;; Method
-              (3 . (fa_tag :face font-lock-function-name-face)) ;; Function
-              (4 . (fa_tag :face font-lock-function-name-face)) ;; Constructor
-              (5 . (fa_cog :foreground "#FF9800")) ;; Field
-              (6 . (fa_cog :foreground "#FF9800")) ;; Variable
-              (7 . (fa_cube :foreground "#7C4DFF")) ;; Class
-              (8 . (fa_cube :foreground "#7C4DFF")) ;; Interface
-              (9 . (fa_cube :foreground "#7C4DFF")) ;; Module
-              (10 . (fa_cog :foreground "#FF9800")) ;; Property
-              (11 . md_settings_system_daydream) ;; Unit
-              (12 . (fa_cog :foreground "#FF9800")) ;; Value
-              (13 . (md_storage :face font-lock-type-face)) ;; Enum
-              (14 . (md_closed_caption :foreground "#009688")) ;; Keyword
-              (15 . md_closed_caption) ;; Snippet
-              (16 . (md_color_lens :face font-lock-doc-face)) ;; Color
-              (17 . fa_file_text_o) ;; File
-              (18 . md_refresh) ;; Reference
-              (19 . fa_folder_open) ;; Folder
-              (20 . (md_closed_caption :foreground "#009688")) ;; EnumMember
-              (21 . (fa_square :face font-lock-constant-face)) ;; Constant
-              (22 . (fa_cube :face font-lock-type-face)) ;; Struct
-              (23 . fa_calendar) ;; Event
-              (24 . fa_square_o) ;; Operator
-              (25 . fa_arrows)) ;; TypeParameter
-            )
-      )
-    ))
+  (with-eval-after-load 'all-the-icons
+    (declare-function all-the-icons-faicon 'all-the-icons)
+    (declare-function all-the-icons-material 'all-the-icons)
+    (setq company-box-icons-all-the-icons
+          `((Unknown . ,(all-the-icons-material "find_in_page" :height 0.9 :v-adjust -0.2))
+            (Text . ,(all-the-icons-faicon "text-width" :height 0.85 :v-adjust -0.05))
+            (Method . ,(all-the-icons-faicon "cube" :height 0.85 :v-adjust -0.05 :face 'all-the-icons-purple))
+            (Function . ,(all-the-icons-faicon "cube" :height 0.85 :v-adjust -0.05 :face 'all-the-icons-purple))
+            (Constructor . ,(all-the-icons-faicon "cube" :height 0.85 :v-adjust -0.05 :face 'all-the-icons-purple))
+            (Field . ,(all-the-icons-faicon "tag" :height 0.85 :v-adjust -0.05 :face 'all-the-icons-lblue))
+            (Variable . ,(all-the-icons-faicon "tag" :height 0.85 :v-adjust -0.05 :face 'all-the-icons-lblue))
+            (Class . ,(all-the-icons-material "settings_input_component" :height 0.9 :v-adjust -0.2 :face 'all-the-icons-orange))
+            (Interface . ,(all-the-icons-material "share" :height 0.9 :v-adjust -0.2 :face 'all-the-icons-lblue))
+            (Module . ,(all-the-icons-material "view_module" :height 0.9 :v-adjust -0.2 :face 'all-the-icons-lblue))
+            (Property . ,(all-the-icons-faicon "wrench" :height 0.85 :v-adjust -0.05))
+            (Unit . ,(all-the-icons-material "settings_system_daydream" :height 0.9 :v-adjust -0.2))
+            (Value . ,(all-the-icons-material "format_align_right" :height 0.9 :v-adjust -0.2 :face 'all-the-icons-lblue))
+            (Enum . ,(all-the-icons-material "storage" :height 0.9 :v-adjust -0.2 :face 'all-the-icons-orange))
+            (Keyword . ,(all-the-icons-material "filter_center_focus" :height 0.9 :v-adjust -0.2))
+            (Snippet . ,(all-the-icons-material "format_align_center" :height 0.9 :v-adjust -0.2))
+            (Color . ,(all-the-icons-material "palette" :height 0.9 :v-adjust -0.2))
+            (File . ,(all-the-icons-faicon "file-o" :height 0.9 :v-adjust -0.05))
+            (Reference . ,(all-the-icons-material "collections_bookmark" :height 0.9 :v-adjust -0.2))
+            (Folder . ,(all-the-icons-faicon "folder-open" :height 0.9 :v-adjust -0.05))
+            (EnumMember . ,(all-the-icons-material "format_align_right" :height 0.9 :v-adjust -0.2 :face 'all-the-icons-lblue))
+            (Constant . ,(all-the-icons-faicon "square-o" :height 0.9 :v-adjust -0.05))
+            (Struct . ,(all-the-icons-material "settings_input_component" :height 0.9 :v-adjust -0.2 :face 'all-the-icons-orange))
+            (Event . ,(all-the-icons-faicon "bolt" :height 0.85 :v-adjust -0.05 :face 'all-the-icons-orange))
+            (Operator . ,(all-the-icons-material "control_point" :height 0.9 :v-adjust -0.2))
+            (TypeParameter . ,(all-the-icons-faicon "arrows" :height 0.85 :v-adjust -0.05))
+            (Template . ,(all-the-icons-material "format_align_center" :height 0.9 :v-adjust -0.2))))))
 
 ;; (use-package helm-company)
 
