@@ -2,6 +2,7 @@
 ;; Load fonts
 (when (eq system-type 'gnu/linux)
   (progn
+    (set-frame-font "-lucy-tewi-medium-r-normal--11-90-100-100-c-60-ISO10646-1" nil t)
     (set-face-attribute 'default nil :font "-lucy-tewi-medium-r-normal--11-90-100-100-c-60-ISO10646-1")
     (add-to-list 'default-frame-alist '(font . "-lucy-tewi-medium-r-normal--11-90-100-100-c-60-ISO10646-1"))))
 
