@@ -2,7 +2,6 @@
 ;; Setup flycheck  
 ;; -----------------------------------------
 ;; flycheck           | https://github.com/flycheck/flycheck 
-;; lsp-flycheck       | https://github.com/joshwnj/json-mode
 ;; flycheck-posframe  | https://github.com/alexmurray/flycheck-posframe
 
 
@@ -78,9 +77,8 @@ up before you execute another command."
 
 
 (use-package flycheck-posframe
-  :after (posframe flycheck) 
-  :config (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode))
-  
+  :after flycheck
+  :config (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode))  
 
 
 (provide 'setup-flycheck)
