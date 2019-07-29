@@ -16,13 +16,11 @@
                                (concat "custom_" emacs-version-short ".el")))
 
 
-(when (eq system-type 'gnu/linux)
-    (add-to-list 'load-path "~/.local/share/icons-in-terminal/"))
-
 ;; List of packages to install at launch
 (setq my-packages
       '(
         aggressive-indent
+        all-the-icons
         ;; electric-spacing
         electric-operator 
         diminish
@@ -172,10 +170,7 @@
 ;(setq split-width-threshold nil)
 
 
-;; NodeJs repl
-;; (setq rtog/mode-repl-alist '(js2-mode . nodejs-repl))
-
-
+;; Disable stuff on large filesize
 (defun conditional-disable-modes ()
   (when (> (buffer-size) 1000000)
     (flycheck-mode -1)))
