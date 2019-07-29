@@ -1,3 +1,9 @@
+
+;; Packages:
+;;    magit      | https://github.com/magit/magit 
+;;    git-gutter | https://github.com/syohex/emacs-git-gutter
+;;    diff-hl    | https://github.com/dgutov/diff-hl
+
 (setq vc-make-backup-files t)
 
 ;; (after-load 'vc-git 
@@ -20,7 +26,7 @@
 
 
 (use-package magit
-  :pin melpa-stable
+  ;; :pin melpa-stable
   :init
   (setq magit-status-buffer-switch-function 'switch-to-buffer)
   (setq magit-section-show-child-count t)
