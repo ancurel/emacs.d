@@ -16,6 +16,9 @@
                                (concat "custom_" emacs-version-short ".el")))
 
 
+;; Fix for downloading packages from ELPA in emacs-27
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 ;; List of packages to install at launch
 (setq my-packages
       '(

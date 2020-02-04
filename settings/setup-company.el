@@ -4,9 +4,9 @@
 ;; company-mode      | https://github.com/company-mode/company-mode 
 ;; company-quickhelp | https://github.com/expez/company-quickhelp
 ;; company-lsp       | https://github.com/tigersoldier/company-lsp
-;; helm-company      | https://github.com/yasuyk/helm-company 
 ;; company-box       | https://github.com/sebastiencs/company-box
 ;; company-posframe  | https://github.com/tumashu/company-posframe
+;; helm-company      | https://github.com/yasuyk/helm-company 
 
 
 (use-package company
