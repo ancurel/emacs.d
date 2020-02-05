@@ -27,7 +27,7 @@
         ;; electric-spacing
         electric-operator 
         diminish
-        dired-details
+        ;; dired-details
         ;; fill-column-indicator
         guide-key
         helm
@@ -50,7 +50,7 @@
         ;; repl-toggle
         ;; restclient
         use-package
-        smex
+        ;; smex
         yaml-mode
         ))
 
