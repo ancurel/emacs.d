@@ -10,7 +10,8 @@
 
 
 (use-package company
-  :diminish company-mode
+  :defer 5
+  :diminish
   :init
   (setq company-idle-delay 0.2)
   (setq company-minimum-prefix-length 2)

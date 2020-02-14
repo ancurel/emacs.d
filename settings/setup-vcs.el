@@ -26,8 +26,10 @@
 
 
 (use-package magit
+  :commands (magit-status
+             magit-blame-popup)
   ;; :pin melpa-stable
-  :init
+  :config
   (setq magit-status-buffer-switch-function 'switch-to-buffer)
   (setq magit-section-show-child-count t)
   (setq magit-diff-arguments '("--histogram")))

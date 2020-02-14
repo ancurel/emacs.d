@@ -7,10 +7,7 @@
 ;;    flycheck-rust | https://github.com/flycheck/flycheck-rust
 
 (use-package rust-mode
-  :init
-  (require 'rust-mode)
-  (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
-  
+  :mode "\\.rs\\'"
   :config
   ;; (use-package company-racer)
   (use-package flycheck-rust

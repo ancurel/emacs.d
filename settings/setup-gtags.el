@@ -3,7 +3,7 @@
 ;; https://github.com/leoliu/ggtags
 
 (use-package gtags
-  :disabled
+  :disabled t
   :pin marmalade
   :mode "\\.php\\'"
   :config

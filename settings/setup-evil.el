@@ -16,24 +16,23 @@
 
 (use-package evil-commentary
   :diminish evil-commentary-mode
-  :init
+  :config
   (evil-commentary-mode))
 
 (use-package evil-exchange
-  :init
+  :config
   (evil-exchange-install))
 
 (use-package evil-leader
-  :init
-  (global-evil-leader-mode)
   :config
+  (global-evil-leader-mode)
   (setq evil-leader/in-all-states 1))
 
 (use-package evil-magit
   :after (magit))
 
 (use-package evil-matchit
-  :init
+  :config
   (global-evil-matchit-mode 1))
 
 (use-package evil-indent-plus)
@@ -68,24 +67,23 @@
   :config (add-hook 'smartparens-strict-mode-hook #'evil-smartparens-mode))
 
 (use-package evil-surround
-  :init
+  :config
   (global-evil-surround-mode 1))
 
 (use-package evil-vimish-fold
-  :init
+  :config
   (evil-vimish-fold-mode 1))
 
 (use-package evil-visualstar
-  :init
+  :config
   (global-evil-visualstar-mode))
 
 
 (use-package evil
-  :init
+  :config
   ;; Always use evil mode.
   (evil-mode 1)
 
-  :config
   ;; My personal evil settings.
   (setq evil-want-C-u-scroll t)
   (setq-default evil-want-C-i-jump nil)

@@ -5,8 +5,9 @@
 
 
 (use-package elpy
-  :init (elpy-enable)
+  :mode "\\.py\\'"
   :config
+  (elpy-enable)
   (defalias 'workon 'pyvenv-workon)
 
   (setq elpy-rpc-backend "jedi")

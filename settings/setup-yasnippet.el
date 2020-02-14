@@ -1,6 +1,6 @@
 
 (use-package yasnippet
-  :init
+  :config
   (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
   (yas-global-mode 1)
   

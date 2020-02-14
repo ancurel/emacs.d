@@ -6,6 +6,8 @@
 
 (use-package rainbow-mode
   :diminish rainbow-mode
+  :mode (("\\.css$"  . css-mode)
+         ("\\.scss$" . scss-mode))
   :config
   (dolist (hook '(css-mode-hook scss-mode-hook html-mode-hook))
     (add-hook hook 'rainbow-mode)))
