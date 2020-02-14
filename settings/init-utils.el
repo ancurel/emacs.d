@@ -33,6 +33,16 @@
   (indent-according-to-mode))
 
 
+(defun util/defer-garbage-collection-h ()
+  (setq gc-cons-threshold most-positive-fixnum))
+
+(defun util/restore-garbage-collection-h ()
+  ;; Defer it so that commands launched immediately after will enjoy the
+  ;; benefits.
+  (run-at-time
+   1 nil (lambda () (setq gc-cons-threshold doom-gc-cons-threshold))))
+
+
 ;;----------------------------------------------------------------------------
 ;; Functions for working with the X clipboard, which is very handy.
 ;;----------------------------------------------------------------------------

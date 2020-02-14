@@ -1,3 +1,5 @@
+;; Supprress GC at  startup
+(setq gc-cons-threshold most-positive-fixnum)
 
 ;; Hide menu/tool/scroll bars early
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -29,6 +31,7 @@
         diminish
         ;; dired-details
         ;; fill-column-indicator
+        gcmh
         guide-key
         helm
         helm-ag
@@ -111,6 +114,8 @@
 (after-load 'undo-tree (diminish 'undo-tree-mode))
 (after-load 'git-gutter+ (diminish 'git-gutter-mode))
 
+;; Enable sneaky garbage collector startegy
+(gcmh-mode 1)
 
 ;; Save point position between sessions
 (setq-default save-place t)
@@ -160,7 +165,7 @@
 ;; (global-aggressive-indent-mode 1)
 
 ;; Smex
-(smex-initialize)
+;; (smex-initialize)
 
 
 ;;; Don't actually use VC, because it slows down loading.
