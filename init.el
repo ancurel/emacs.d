@@ -32,7 +32,6 @@
         ;; dired-details
         ;; fill-column-indicator
         gcmh
-        guide-key
         helm
         helm-ag
         helm-projectile
@@ -55,6 +54,7 @@
         use-package
         ;; smex
         yaml-mode
+        which-key
         ))
 
 
@@ -109,7 +109,7 @@
 
 ;; Hide some modes
 (after-load 'hs-minor-mode (dminish 'hs-minor-mode))
-(after-load 'guide-key (diminish 'guide-key-mode))
+(after-load 'which-key (diminish 'which-key-mode))
 (after-load 'projectile (diminish 'projectile-mode))
 (after-load 'undo-tree (diminish 'undo-tree-mode))
 (after-load 'git-gutter+ (diminish 'git-gutter-mode))
@@ -144,11 +144,9 @@
   (add-hook it (key-chord-define evil-insert-state-map ";;" 'end-of-line-insert-delim)))
 
 
-;;; Always use guide-key mode, it is awesome.
-(setq guide-key/guide-key-sequence t)
-(setq guide-key/idle-delay 0.5)
-(setq guide-key/popup-window-position 'bottom)
-(guide-key-mode 1)
+;;; Always use which-key mode, it is awesome.
+(setq which-key-idle-delay 0.5)
+(which-key-mode 1)
 
 
 ;; Turn on that number coloring for most languages
