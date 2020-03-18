@@ -59,9 +59,9 @@
    `(mode-line-inactive                      ((t (:inherit mode-line :background ,gray-0 :box (:line-width 5 :color ,gray-0 :style nil)))))
    `(region                                  ((t (:background ,gray-1))))
    `(secondary-selection                     ((t (:background ,gray-2))))
-   `(error                                   ((t (:foreground ,red :weight bold))))
-   `(warning                                 ((t (:foreground ,blue :weight bold))))
-   `(success                                 ((t (:foreground ,cyan :weight bold))))
+   `(error                                   ((t (:foreground ,red :weight normal))))
+   `(warning                                 ((t (:foreground ,blue :weight normal))))
+   `(success                                 ((t (:foreground ,cyan :weight normal))))
    `(tooltip                                 ((t (:foreground ,foreground :background ,black, :weight normal))))
 
    `(header-line                             ((t (:inherit mode-line :foreground ,gray-4 :background nil))))
