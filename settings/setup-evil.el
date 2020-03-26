@@ -11,6 +11,7 @@
 ;;    evil-org         | https://github.com/edwtjo/evil-org-mode
 ;;    evil-snipe       | https://github.com/hlissner/evil-snipe
 ;;    evil-surround    | https://github.com/timcharper/evil-surround
+;;    vimish-fold      | https://github.com/mrkkrp/vimish-fold
 ;;    evil-vimish-fold | https://github.com/alexmurray/evil-vimish-fold
 ;;    evil-visualstar  | https://github.com/bling/evil-visualstar
 
@@ -70,9 +71,13 @@
   :config
   (global-evil-surround-mode 1))
 
+(use-package vimish-fold
+  :after evil)
+
 (use-package evil-vimish-fold
+  :after vimish-fold
   :config
-  (evil-vimish-fold-mode 1))
+  (global-evil-vimish-fold-mode))
 
 (use-package evil-visualstar
   :config
