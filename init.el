@@ -32,10 +32,6 @@
         ;; dired-details
         ;; fill-column-indicator
         gcmh
-        helm
-        helm-ag
-        helm-projectile
-        ; helm-swoop
 	highlight-numbers
 	highlight-operators
 	highlight-parentheses
@@ -89,6 +85,7 @@
 ;; Setup packages
 (require 'setup-editorconfig)
 (require 'setup-evil)
+(require 'setup-helm)
 (require 'setup-lsp)
 (require 'setup-company)
 (require 'setup-smartparens)
