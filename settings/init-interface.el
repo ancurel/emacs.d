@@ -2,7 +2,7 @@
 ;; Load fonts
 (when (eq system-type 'gnu/linux)
   (progn
-    (add-to-list 'default-frame-alist '(font . "-lucy-tewi-medium-r-normal--11-90-100-100-c-60-ISO10646-1"))))
+    (add-to-list 'default-frame-alist '(font . "tewi:pixelsize=11:foundry=lucy:weight=normal:slant=normal:width=normal:spacing=110:scalable=false"))))
 
 ;; Don't resize frame if font is smaller/larger than system default, Improve startupe time
 (setq frame-inhibit-implied-resize t)
@@ -79,7 +79,7 @@
   "Color of parenthesis in varous languages")
 
 (defface highlight-todo 
-  '((t (:foreground "black" :background "purple1")))
+  '((t (:foreground "white" :background "purple1")))
   "Highlight TODO word in sourcoede.")
 
 (defface highlight-fixme 
@@ -91,8 +91,8 @@
     '(
       ; ("\\([~^<>:=,.\\+*/%-]\\)" 1 'font-lock-operator-face)
       ("\\([{}()]\\)" 1 'font-lock-parenthesis-face)
-      ("\\<\\( TODO\\):" 1 'highlight-todo prepend)
-      ("\\<\\( FIXME\\):" 1 'highlight-fixme prepend)
+      ("\\(TODO\\):" 1 'highlight-todo prepend)
+      ("\\(FIXME\\):" 1 'highlight-fixme prepend)
       ))
   (font-lock-add-keywords nil prog-extra-keywords))
 

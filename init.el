@@ -94,6 +94,7 @@
 (require 'setup-gtags)
 (require 'setup-vcs)
 (require 'setup-search)
+;; (require 'setup-treesitter)
 
 ;; Setup languages
 (require 'setup-js)

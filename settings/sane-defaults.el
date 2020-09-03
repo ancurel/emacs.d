@@ -1,3 +1,6 @@
+;; Don't create lockfiles - disabling can cause collision if files are not local
+(setq create-lockfiles nil)
+
 ;; Don't allow pasting selection outside of Emacs
 (setq x-select-enable-clipboard nil)
 
@@ -77,6 +80,10 @@
 
 ;; Don't be so stingy on the memory, we have lots now. It's the distant future.
 (setq gc-cons-threshold 20000000)
+
+;; Increase the amount of data Emacs read from the process default 4k is too low
+;; for language servers
+(setq read-process-output-max (* 1024 1024))
 
 ;; org-mode: Don't ruin S-arrow to switch windows please (use M-+ and M-- instead to toggle)
 (setq org-replace-disputed-keys t)
