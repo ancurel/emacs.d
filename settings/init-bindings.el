@@ -29,11 +29,11 @@
     (evil-leader/set-key
       "aa" 'align-regexp
       "a=" 'my-align-single-equals
-      "b"  'helm-mini             ;; Switch to another buffer
       "c"  (kbd "\"+y") 
+      "b"  'helm-mini             ;; Switch to another buffer
       "B"  'magit-blame-popup
-      "D"  'kill-this-buffer
-      "d"  (lambda () (interactive) (evil-ex-call-command nil "bdelete" nil))
+      "d"  'kill-this-buffer
+      "D"  (lambda () (interactive) (evil-ex-call-command nil "bdelete" nil))
       "f"  'helm-imenu            ;; Jump to function in buffer
       "g"  'magit-status
       "l"  'whitespace-mode       ;; Show invisible characters
@@ -42,7 +42,8 @@
       "o"  'delete-other-windows  ;; C-w o
       "p"  'helm-show-kill-ring
       "s"  'ag-project            ;; Ag search from project's root
-      "r"  (lambda () (interactive) (font-lock-fontify-buffer) (redraw-display))
+      "r"  'ranger
+      "R"  (lambda () (interactive) (font-lock-fontify-buffer) (redraw-display))
       "S"  'delete-trailing-whitespace
       "T"  'gtags-reindex
       "t"  'gtags-find-tag
