@@ -3,13 +3,19 @@
 ;; https://github.com/mooz/js2-mode
 
 ;; Other packages:
-;;    json-mode    | https://github.com/joshwnj/json-mode
-;;    rjsx-mode    | https://github.com/felipeochoa/rjsx-mode
-;;    js2-refactor | https://github.com/magnars/js2-refactor.el
-;;    tern         | https://github.com/marijnh/tern/tree/master/emacs
-;;    company-tern | https://github.com/proofit404/company-tern
+;;    json-mode       | https://github.com/joshwnj/json-mode
+;;    rjsx-mode       | https://github.com/felipeochoa/rjsx-mode
+;;    typescript-mode | https://github.com/emacs-typescript/typescript.el 
+;;    svelte-mode     | https://github.com/leafOfTree/svelte-mode
 
-(use-package js2-mode
+(use-package svelte-mode)
+
+(use-package typescript-mode
+  :mode ("\\.tsx?\\'" . typescript-mode)
+  :config
+  (setq typescript-indent-level 2))
+
+(use-package js
   :mode (("\\.js\\'" . js2-mode)
          ("\\.jsx\\'" . rjsx-mode))
   :config
@@ -26,22 +32,22 @@
                                        "console" "JSON"))
 
     ;; Setup some custom syntax highlighting
-    (defface js2-instruction-separator
+    (defface js-instruction-separator
       '((t (:foreground "dim gray")))
       "Used in Javascript to end instructions.")
 
-    (defface js2-return-statement
-      '((t (:foreground "cyan")))
+    (defface js-return-statement
+      '((t (:foreground "#4fddea")))
       "Used in Javascript to return from a function.")
 
-    (defvar js2-extra-keywords
+    (defvar js-extra-keywords
       '(
-        ("\\(;\\)$" 0 'js2-instruction-separator append)
-        ("\\(return\\)" 0 'js2-return-statement prepend)
+        (";$" 0 'js-instruction-separator prepend)
+        ("\\_<\\(return\\)\\_>" 1 'js-return-statement prepend)
         ))
 
-    (font-lock-add-keywords 'js2-mode js2-extra-keywords)
-    (font-lock-add-keywords 'js2-jsx-mode js2-extra-keywords)
+    (font-lock-add-keywords 'js2-mode js-extra-keywords)
+    (font-lock-add-keywords 'rjsx-mode js-extra-keywords)
 
     (setq-default sgml-basic-offset 2)
     (setq-default js2-basic-offset 2)
@@ -64,7 +70,7 @@
           (if (looking-back "^\s*")
               (back-to-indentation)))))
 
-    (define-key js2-mode-map (kbd "TAB") 'js2-tab-properly)
+    (define-key js-mode-map (kbd "TAB") 'js2-tab-properly)
 
     ;; Let flycheck handle parse errors
     (setq-default js2-show-parse-errors nil)
@@ -84,21 +90,6 @@
 
     ;; electric-layout-mode doesn't play nice with smartparens
     (setq-local electric-layout-rules '((?\; . after)))
-
-    ;; (use-package tern
-    ;;   :init
-    ;;   (progn
-    ;;     (add-hook 'js-mode-hook 'tern-mode)
-
-    ;;     (evil-leader/set-key-for-mode 'js2-mode "mrrV" 'tern-rename-variable)
-    ;;     (evil-leader/set-key-for-mode 'js2-mode "mhd" 'tern-get-docs)
-    ;;     (evil-leader/set-key-for-mode 'js2-mode "mgg" 'tern-find-definition)
-    ;;     (evil-leader/set-key-for-mode 'js2-mode "mgG" 'tern-find-definition-by-name)
-    ;;     (evil-leader/set-key-for-mode 'js2-mode (kbd "m C-g") 'tern-pop-find-definition)
-    ;;     (evil-leader/set-key-for-mode 'js2-mode "mht" 'tern-get-type)
-
-    ;;     (use-package company-tern
-    ;;       :init (progn (add-to-list 'company-backends 'company-tern)))))
 
     ))
 
