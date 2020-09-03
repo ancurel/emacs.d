@@ -39,6 +39,8 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("ublt" . "https://elpa.ubolonton.org/packages/"))
+
 
 ;; Load emacs packages and activate them
 ;; This must come before configurations of installed packages.

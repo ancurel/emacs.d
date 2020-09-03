@@ -9,6 +9,12 @@
   :hook (prog-mode . lsp)
   :commands lsp
   :config
+  ;; enable log only for debug
+   (setq lsp-log-io nil)
+   
+  ;; handle yasnippet by myself
+  (setq lsp-enable-snippet nil)
+
   ;; Don't prompt the user for the project root every time we open a new
   ;; lsp-worthy file, instead, try to guess it with projectile.
   (setq lsp-auto-guess-root t)
@@ -18,6 +24,7 @@
   (setq lsp-keep-workspace-alive nil)
 
   (setq lsp-prefer-flymake nil)
+  (setq lsp-idle-delay 0.300)
 
   (setenv "TSSERVER_LOG_FILE" "/tmp/tsserver.log")
 )

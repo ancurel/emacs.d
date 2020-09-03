@@ -15,6 +15,7 @@
     (--each '(css-mode-hook
               scss-mode-hook
               js-mode-hook
+              typescript-mode-hook
               php-mode-hook
               markdown-mode
               restclient-mode-hook)
