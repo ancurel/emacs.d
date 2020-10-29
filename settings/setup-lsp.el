@@ -27,6 +27,9 @@
   (setq lsp-idle-delay 0.300)
 
   (setenv "TSSERVER_LOG_FILE" "/tmp/tsserver.log")
+  
+  ;; Which key integration
+  (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration t)
 )
 
 (use-package lsp-ui

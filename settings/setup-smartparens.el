@@ -18,6 +18,7 @@
               typescript-mode-hook
               php-mode-hook
               markdown-mode
+              rust-mode
               restclient-mode-hook)
       (add-hook it 'turn-on-smartparens-mode))
 

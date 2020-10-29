@@ -85,9 +85,6 @@
                                (js2-imenu-extras-mode +1)
                                (setq mode-name "JS2")))
     
-    (after-load 'lsp-mode
-      (add-hook 'js2-mode-hook 'lsp))
-
     ;; electric-layout-mode doesn't play nice with smartparens
     (setq-local electric-layout-rules '((?\; . after)))
 
