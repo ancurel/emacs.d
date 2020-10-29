@@ -19,7 +19,7 @@
 
 
 ;; Fix for downloading packages from ELPA in emacs-27
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+;; (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
 
 ;; List of packages to install at launch
 (setq my-packages
@@ -91,10 +91,10 @@
 (require 'setup-smartparens)
 (require 'setup-flycheck)
 (require 'setup-yasnippet)
-(require 'setup-gtags)
+;; (require 'setup-gtags)
 (require 'setup-vcs)
 (require 'setup-search)
-;; (require 'setup-treesitter)
+(require 'setup-treesitter)
 
 ;; Setup languages
 (require 'setup-js)
@@ -114,6 +114,9 @@
 
 ;; Enable sneaky garbage collector startegy
 (gcmh-mode 1)
+
+; Enable global-undo-tree-mode for evil
+(global-undo-tree-mode 1) 
 
 ;; Save point position between sessions
 (setq-default save-place t)
