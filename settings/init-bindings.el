@@ -36,7 +36,6 @@
       "D"  (lambda () (interactive) (evil-ex-call-command nil "bdelete" nil))
       "f"  'helm-imenu            ;; Jump to function in buffer
       "g"  'magit-status
-      "l"  'whitespace-mode       ;; Show invisible characters
       "nn" 'narrow-and-set-normal ;; Narrow to region and enter normal mode
       "nw" 'widen
       "o"  'delete-other-windows  ;; C-w o
@@ -50,6 +49,7 @@
       "u"  'org-open-at-point-global
       "v"  (kbd "\"+p")
       "w"  'split-window-horizontally
+      "W"  'whitespace-mode       ;; Show invisible characters
       "x"  'helm-M-x
       ))
 
@@ -95,8 +95,6 @@
   (define-key evil-normal-state-map (kbd "[i")    'show-first-occurrence)
   (define-key evil-normal-state-map (kbd "]n")    'next-conflict-marker)
   (define-key evil-normal-state-map (kbd "[n")    'previous-conflict-marker)
-  (define-key evil-normal-state-map (kbd "SPC")   'evil-scroll-page-down)
-  (define-key evil-normal-state-map (kbd "s-SPC") 'evil-scroll-page-up)
   (define-key evil-normal-state-map (kbd "s-p")   'evil-paste-pop)
 
   (define-key evil-insert-state-map (kbd "C-e")   'end-of-line)
@@ -145,6 +143,13 @@
 
 (after-load 'rjsx-mode
   (define-key rjsx-mode-map (kbd "<C-return>") 'rjsx-delete-creates-full-tag))
+
+
+(after-load 'lsp-mode
+  (after-load 'evil
+    (after-load 'evil-leader
+      (evil-leader/set-key
+        "l" lsp-command-map))))
 
 
 (after-load 'elpy
