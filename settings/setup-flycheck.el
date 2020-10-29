@@ -31,7 +31,7 @@
                         '(json-jsonlist)))
   
   ;; Try to use local eslint in projects
-  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
+  ;; (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules)
 
   ;; use eslint with web-mode for jsx files
   (flycheck-add-mode 'javascript-eslint 'web-mode)
@@ -76,9 +76,9 @@ up before you execute another command."
                                   (evil-define-key 'normal flycheck-mode-map (kbd "[e") 'flycheck-previous-error))))
 
 
-(use-package flycheck-posframe
-  :after flycheck
-  :config (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode))  
+;; (use-package flycheck-posframe
+;;   :after flycheck
+;;   :config (add-hook 'flycheck-mode-hook #'flycheck-posframe-mode))  
 
 
 (provide 'setup-flycheck)
