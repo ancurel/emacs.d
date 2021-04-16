@@ -2,15 +2,11 @@
 ;; Setup php-mode
 ;; https://github.com/ejmr/php-mode
 
-;; Other packages:
-;;    php-extras (https://github.com/arnested/php-extras)
-
 
 (use-package php-mode
   :pin melpa
   :mode ("\\.php\\'" . php-mode);
   :config
-  (use-package php-extras)
   (require 'newcomment)
 
   ;; Custom php syntax highlighting
