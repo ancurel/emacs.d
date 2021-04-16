@@ -122,6 +122,8 @@
 (setq-default save-place t)
 (setq save-place-file (expand-file-name ".places" user-emacs-directory))
 
+;; Enable projectile mode
+(projectile-mode +1)
 
 ;;; Keychord mode
 (key-chord-mode 1)
