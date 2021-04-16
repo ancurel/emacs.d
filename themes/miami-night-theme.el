@@ -80,7 +80,7 @@
    `(font-lock-negation-char-face            ((t (:foreground ,red))))
    `(font-lock-number-face                   ((t (:foreground ,cyan))))
    `(font-lock-operator-face                 ((t (:foreground ,blue-light))))
-   `(font-lock-parenthesis-face              ((t (:foreground ,purple))))
+   `(font-lock-parenthesis-face              ((t (:foreground ,purple-light))))
    `(font-lock-preprocessor-face             ((t (:foreground ,blue))))
    `(font-lock-regexp-grouping-backslash     ((t (:foreground ,cyan))))
    `(font-lock-regexp-grouping-construct     ((t (:foreground ,cyan))))
@@ -484,6 +484,7 @@
     `(tree-sitter-hl-face:punctuation.bracket   ((t (:foreground ,purple-light))))
     `(tree-sitter-hl-face:punctuation.delimiter ((t (:foreground ,purple))))
     `(tree-sitter-hl-face:string.special        ((t (:foreground ,blue-dark))))
+    `(tree-sitter-hl-face:type.builtin          ((t (:foreground ,blue-light))))
     )
 
    (custom-theme-set-variables
