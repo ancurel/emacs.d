@@ -6,18 +6,33 @@
 
 (use-package lsp-mode
   :diminish lsp-mode
-  :hook (prog-mode . lsp)
+  :hook (
+         (css-mode . lsp)
+         (js-mode . lsp)
+         (typescript-mode . lsp)
+         (python-mode . lsp)
+         (rust-mode . lsp)
+         )
   :commands lsp
   :config
   ;; enable log only for debug
-   (setq lsp-log-io nil)
-   
+  (setq lsp-log-io nil)
+  
+  ;; The package manager you use to install node modules
+  (setq lsp-eslint-package-manager "pnpm")
+  
+  ;; don't watch too many files
+  (setq lsp-file-watch-threshold 500)
+
   ;; handle yasnippet by myself
   (setq lsp-enable-snippet nil)
+  
+  ;; Disable breadcrumb bar
+  (setq lsp-headerline-breadcrumb-enable nil)
 
   ;; Don't prompt the user for the project root every time we open a new
   ;; lsp-worthy file, instead, try to guess it with projectile.
-  (setq lsp-auto-guess-root t)
+  ;; (setq lsp-auto-guess-root t)
 
   ;; Auto-kill LSP server once you've killed the last buffer associated with its
   ;; project.
@@ -30,7 +45,7 @@
   
   ;; Which key integration
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration t)
-)
+  )
 
 (use-package lsp-ui
   :hook (lsp-mode . lsp-ui-mode)
