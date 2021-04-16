@@ -8,7 +8,11 @@
 ;;    typescript-mode | https://github.com/emacs-typescript/typescript.el 
 ;;    svelte-mode     | https://github.com/leafOfTree/svelte-mode
 
-(use-package svelte-mode)
+(use-package json-mode)
+(use-package rjsx-mode)
+
+(use-package svelte-mode
+  :mode ("\\.svelte\\'" . svelte-mode))
 
 (use-package typescript-mode
   :mode ("\\.tsx?\\'" . typescript-mode)
@@ -20,9 +24,6 @@
          ("\\.jsx\\'" . rjsx-mode))
   :config
   (progn
-    (use-package json-mode)
-    (use-package rjsx-mode)
-
     (require 'js2-imenu-extras)
     (js2-imenu-extras-setup)
 
