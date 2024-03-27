@@ -20,6 +20,10 @@
     (local-set-key (kbd "RET") 'newline-and-indent)
     (electric-indent-local-mode)
 
+    ;; Since there are so many css preprocess sass/postcss with different
+    ;; configurations, it's just easier to disable flycheck
+    (flycheck-mode -1)
+
     ;; Tone down highlighting to avoid breaking syntax-highlighting
     (highlight-operators-mode -1)
     (highlight-numbers-mode -1)

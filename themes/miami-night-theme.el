@@ -470,6 +470,7 @@
     `(lsp-ui-sideline-global                  ((t (:background ,background))))
     `(lsp-ui-sideline-symbol                  ((t (:foreground ,gray-4 :box (:line-width -1 :color ,gray-4)))))
     `(lsp-ui-sideline-symbol-info             ((t nil)))
+    `(lsp-ui-sideline-code-action             ((t (:foreground ,gray-5 :background ,background :weight normal))))
     
     `(tree-sitter-hl-face:attribute             ((t (:foreground ,foreground))))
     `(tree-sitter-hl-face:constructor           ((t (:foreground ,purple-light))))

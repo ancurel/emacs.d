@@ -17,6 +17,7 @@
 ;;    evil-visualstar  | https://github.com/bling/evil-visualstar
 
 (use-package evil
+  :pin melpa-stable
   :init
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
@@ -64,7 +65,8 @@
     (if (and delete-selection-mode transient-mark-mode mark-active)
         (setq deactivate-mark  t)
       (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
-      (abort-recursive-edit))))
+      (abort-recursive-edit)))
+  )
 
 (use-package evil-commentary
   :diminish evil-commentary-mode

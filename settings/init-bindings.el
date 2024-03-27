@@ -25,27 +25,26 @@
     (key-chord-define evil-insert-state-map "kj" 'newline-and-indent))
 
   (after-load 'evil-leader
-    (evil-leader/set-leader ",")
+    (evil-leader/set-leader "<SPC>")
     (evil-leader/set-key
       "aa" 'align-regexp
       "a=" 'my-align-single-equals
-      "c"  (kbd "\"+y") 
+      "c"  (kbd "\"+y")
       "b"  'helm-mini             ;; Switch to another buffer
       "B"  'magit-blame-popup
       "d"  'kill-this-buffer
-      "D"  (lambda () (interactive) (evil-ex-call-command nil "bdelete" nil))
-      "f"  'helm-imenu            ;; Jump to function in buffer
+      "D"  'delete-window
+      "fs" 'helm-imenu            ;; Jump to function in buffer
       "g"  'magit-status
       "nn" 'narrow-and-set-normal ;; Narrow to region and enter normal mode
       "nw" 'widen
       "o"  'delete-other-windows  ;; C-w o
       "p"  'helm-show-kill-ring
+      "q"  'save-buffers-kill-terminal
       "s"  'ag-project            ;; Ag search from project's root
       "r"  'ranger
       "R"  (lambda () (interactive) (font-lock-fontify-buffer) (redraw-display))
       "S"  'delete-trailing-whitespace
-      "T"  'gtags-reindex
-      "t"  'gtags-find-tag
       "u"  'org-open-at-point-global
       "v"  (kbd "\"+p")
       "w"  'split-window-horizontally
@@ -90,7 +89,6 @@
   (define-key evil-normal-state-map (kbd "C-S-P") 'helm-projectile-switch-project)
   (define-key evil-normal-state-map (kbd "C-p")   'helm-projectile)
   (define-key evil-normal-state-map (kbd "-")     'helm-find-files)
-  (define-key evil-normal-state-map (kbd "C-]")   'gtags-find-tag-from-here)
   (define-key evil-normal-state-map (kbd "g/")    'occur-last-search)
   (define-key evil-normal-state-map (kbd "[i")    'show-first-occurrence)
   (define-key evil-normal-state-map (kbd "]n")    'next-conflict-marker)

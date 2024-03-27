@@ -32,17 +32,17 @@
         ;; dired-details
         ;; fill-column-indicator
         gcmh
-	highlight-numbers
-	highlight-operators
-	highlight-parentheses
-	;; highlight-symbol
+        highlight-numbers
+        highlight-operators
+        highlight-parentheses
+        ;; highlight-symbol
         key-chord
         ;; nodejs-repl
         org
         ;; popwin
         ;; pos-tip
         posframe
-        project-root
+        ;; project-root
         projectile
         ranger
         ;; repl-toggle
@@ -81,7 +81,7 @@
 (require 'init-interface)
 (require 'init-modeline)
 (require 'init-bindings)
-
+ 
 ;; Setup packages
 (require 'setup-editorconfig)
 (require 'setup-evil)
@@ -94,7 +94,8 @@
 ;; (require 'setup-gtags)
 (require 'setup-vcs)
 (require 'setup-search)
-(require 'setup-treesitter)
+;; Emacs29 has builtin treesitter support
+;; (require 'setup-treesitter)
 
 ;; Setup languages
 (require 'setup-js)
@@ -115,8 +116,9 @@
 ;; Enable sneaky garbage collector startegy
 (gcmh-mode 1)
 
-; Enable global-undo-tree-mode for evil
-(global-undo-tree-mode 1) 
+;; Enable global-undo-tree-mode for evil
+;; No longer need for emacs 28? 'undo-redo' is builld in
+;; (global-undo-tree-mode 1) 
 
 ;; Save point position between sessions
 (setq-default save-place t)
@@ -144,7 +146,7 @@
 (--each '(css-mode-hook
           js-mode-hook
           c-mode-hook)
-  (add-hook it (key-chord-define evil-insert-state-map ";;" 'end-of-line-insert-delim)))
+  (add-hook it (lambda () (key-chord-define evil-insert-state-map ";;" 'end-of-line-insert-delim))))
 
 
 ;;; Always use which-key mode, it is awesome.

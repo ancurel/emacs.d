@@ -7,7 +7,7 @@
 (use-package lsp-mode
   :diminish lsp-mode
   :hook (
-         (css-mode . lsp)
+         ;; (css-mode . lsp)
          (js-mode . lsp)
          (typescript-mode . lsp)
          (python-mode . lsp)
@@ -23,6 +23,9 @@
   
   ;; don't watch too many files
   (setq lsp-file-watch-threshold 500)
+
+  ;; Hide code actions in sideline
+  (setq lsp-ui-sideline-show-code-actions nil)
 
   ;; handle yasnippet by myself
   (setq lsp-enable-snippet nil)

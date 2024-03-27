@@ -27,6 +27,10 @@
     (require 'js2-imenu-extras)
     (js2-imenu-extras-setup)
 
+    (electric-indent-mode +1)
+    (add-hook 'js2-mode #'electric-operator-mode)
+
+  (add-hook 'rust-mode-hook #'electric-operator-mode)
     (setq-default js2-global-externs '("module" "require" "assert" "refute"
                                        "setTimeout" "clearTimeout" "setInterval"
                                        "clearInterval" "location" "__dirname"
