@@ -4,12 +4,10 @@
 
 ;; Other packages:
 ;;    json-mode       | https://github.com/joshwnj/json-mode
-;;    rjsx-mode       | https://github.com/felipeochoa/rjsx-mode
 ;;    typescript-mode | https://github.com/emacs-typescript/typescript.el 
 ;;    svelte-mode     | https://github.com/leafOfTree/svelte-mode
 
 (use-package json-mode)
-(use-package rjsx-mode)
 
 (use-package svelte-mode
   :mode ("\\.svelte\\'" . svelte-mode))
@@ -20,17 +18,15 @@
   (setq typescript-indent-level 2))
 
 (use-package js
-  :mode (("\\.js\\'" . js2-mode)
-         ("\\.jsx\\'" . rjsx-mode))
   :config
   (progn
     (require 'js2-imenu-extras)
     (js2-imenu-extras-setup)
 
     (electric-indent-mode +1)
-    (add-hook 'js2-mode #'electric-operator-mode)
+    (add-hook 'js-mode #'electric-operator-mode)
+    (add-hook 'js-mode-hook 'js2-minor-mode)
 
-  (add-hook 'rust-mode-hook #'electric-operator-mode)
     (setq-default js2-global-externs '("module" "require" "assert" "refute"
                                        "setTimeout" "clearTimeout" "setInterval"
                                        "clearInterval" "location" "__dirname"

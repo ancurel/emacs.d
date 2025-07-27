@@ -6,13 +6,6 @@
 
 (setq vc-make-backup-files t)
 
-;; (after-load 'vc-git 
-;;   (if (display-graphic-p)
-;;       (use-package git-gutter-fringe+
-;;         :config (git-gutter-fr+-minimal))
-;;     (use-package git-gutter+
-;;       :config (global-git-gutter+-mode))
-;;     ))
 
 (use-package git-gutter
   :config

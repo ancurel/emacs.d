@@ -41,7 +41,7 @@
       "o"  'delete-other-windows  ;; C-w o
       "p"  'helm-show-kill-ring
       "q"  'save-buffers-kill-terminal
-      "s"  'ag-project            ;; Ag search from project's root
+      "s"  'rg-project            ;; Ag search from project's root
       "r"  'ranger
       "R"  (lambda () (interactive) (font-lock-fontify-buffer) (redraw-display))
       "S"  'delete-trailing-whitespace

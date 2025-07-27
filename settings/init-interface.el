@@ -2,9 +2,11 @@
 ;; Load fonts
 (when (eq system-type 'gnu/linux)
   (progn
-    (set-frame-font "Dina 8" nil t)))
-    ;; (add-to-list 'default-frame-alist '(font . "JetBrains Mono:pixelsize=14:weight=medium:width=medium:scalable=true"))))
+    (set-frame-font "JetBrains Mono 10" nil t)
+    ;; (add-to-list 'default-frame-alist '(font . "JetBrains Mono:pixelsize=14:weight=medium:width=medium:scalable=true"))
     ;; (add-to-list 'default-frame-alist '(font . "tewi:pixelsize=12:foundry=lucy:weight=normal:slant=normal:width=normal:spacing=110:scalable=false"))))
+    (set-frame-parameter nil 'alpha-background 87)
+    ))
 
 ;; Don't resize frame if font is smaller/larger than system default, Improve startupe time
 (setq frame-inhibit-implied-resize t)
