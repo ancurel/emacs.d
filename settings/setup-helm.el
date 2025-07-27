@@ -3,9 +3,9 @@
 
 ;; Packages:
 ;;    helm            | https://github.com/emacs-helm  
-;;    helm-ag         | https://github.com/emacsorphanage/helm-ag
 ;;    helm-posframe   | https://github.com/tumashu/helm-posframe
 ;;    helm-projectile | https://github.com/bbatsov/helm-projectile 
+;;    helm-rg         | https://github.com/cosmicexplorer/helm-rg 
 ;;    helm-swoop      | https://github.com/emacsorphanage/helm-swoop
 
 (use-package helm
@@ -18,16 +18,16 @@
     "stderr\\*$"))
     ))
 
-(use-package helm-ag
+(use-package helm-rg
   :after (helm))
 
 (use-package helm-projectile
   :after (helm projectile))
 
-(use-package helm-posframe
-  :after (help)
-  :config
-  (helm-posframe-enable))
+;; (use-package helm-posframe
+;;   :after (help)
+;;   :config
+;;   (helm-posframe-enable))
 
 ;; (use-package helm-swoop
 ;;   :after (helm))
