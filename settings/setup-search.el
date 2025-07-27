@@ -1,13 +1,14 @@
 
 ;; Setup search plugins 
 ;; -----------------------------------------
-;; ag                | https://github.com/Wilfred/ag.el 
+;; rg                | https://github.com/dajva/rg.el 
 
 
-(use-package ag
-  :commands ag
-  :config
-  (add-hook 'ag-search-finished-hook (lambda () (pop-to-buffer next-error-last-buffer))))
+(use-package rg
+  :commands rg
+  ;; :config
+  ;; (add-hook 'ag-search-finished-hook (lambda () (pop-to-buffer next-error-last-buffer))))
+  )
 
 
 
