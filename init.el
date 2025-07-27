@@ -95,10 +95,10 @@
 (require 'setup-vcs)
 (require 'setup-search)
 ;; Emacs29 has builtin treesitter support
-;; (require 'setup-treesitter)
+(require 'setup-treesitter)
 
 ;; Setup languages
-(require 'setup-js)
+;; (require 'setup-js)
 (require 'setup-php)
 (require 'setup-css)
 (require 'setup-web)
